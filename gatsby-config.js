@@ -4,7 +4,14 @@ require(`dotenv`).config({
 
 module.exports = {
   siteMetadata: {
-    siteTitleAlt: `Minimal Blog - Gatsby Theme`,
+    siteTitle: `Jimmy Huynh`,
+    siteTitleAlt: `Jimmy Huynh - Full Stack Engineer`,
+    siteHeadline: `Jimmy Huynh - Full Stack Engineer`,
+    siteUrl: `https://minimal-blog.lekoarts.de`,
+    siteDescription: `Jimmy Huynh's personal website and blog.`,
+    siteLanguage: `en`,
+    siteImage: `/banner.jpg`,
+    author: `Jimmy Huynh`,
   },
   plugins: [
     {
@@ -19,15 +26,19 @@ module.exports = {
             title: `About`,
             slug: `/about`,
           },
+          {
+            title: `Resume`,
+            slug: `/resume`,
+          },
         ],
         externalLinks: [
           {
-            name: `Twitter`,
-            url: `https://twitter.com/lekoarts_de`,
+            name: `LinkedIn`,
+            url: `https://linkedin.com/in/jimmy-huynh`,
           },
           {
-            name: `Instagram`,
-            url: `https://www.instagram.com/lekoarts.de/`,
+            name: `Github`,
+            url: `https://www.github.com/jkchuynh829`,
           },
         ],
       },
