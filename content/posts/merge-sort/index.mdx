@@ -7,9 +7,9 @@ tags:
   - Merge Sort
 ---
 
-Everyone can get a little rusty on their algorithms and data structures. Do front end devs need to know algorithms? The short answer is yes &mdash; solving algorithms shows interviewers how you can think through a problem. It helps them glean on how you will reason about complex problems in your business logic or application.
+Everyone can get a little rusty on their algorithms and data structures. Do front end devs need to know algorithms? The short answer is yes &mdash; solving algorithms shows interviewers how you think. It helps them glean on how you'll reason about complex problems in your business logic or elsewhere in your application.
 
-That being said, I could use the practice. I plan on posting solutions to challenges I run into during interviews and ones I know are common. Today, we'll start with a recursive sorting algorithm &mdash; merge sort! Let's dust off some cobwebs 🕸, shall we?
+That being said, I could use the practice. I plan on posting solutions to challenges I run into during interviews and some that are considered common. Today, we'll start with a recursive sorting algorithm &mdash; merge sort! Let's dust off some cobwebs 🕸, shall we?
 
 I'll show the solution before breaking it down part by part. Here it is:
 
@@ -52,14 +52,14 @@ Merge sort is a "divide-and-conquer" algorithm. This is paradigm in which the pr
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Merge_sort_algorithm_diagram.svg" alt-text="Merge Sort diagram" width="100%" />
 
-So here's what's happening...
+Referencing that diagram, we can break down the steps like this:
 
 1. Determine the base case. Here, it's when an array only has one value. Instead of calling `mergeSort` again, return the array. It's common to always start by figuring out what your base case is. You'll blow your call stack without one. You should definitely blow your call stack sometimes, though &mdash; it's fun!
 1. Split the array in half over and over (...and over).
 1. Do work to solve each subproblem. This involves a simple comparison between the values at index 0 for each array (left and right). 2 and 3 are done over and over (recursively) until 1 (the base case) is reached.
 1. Combine (merge) the solutions to each subproblem.
 
-Here's an animation that might fill in some gaps the image might have left.
+Here's an animation that might fill in some gaps about how the combine step works.
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Merge-sort-example-300px.gif" alt-text="Merge sort animation" />
 
@@ -68,12 +68,14 @@ Here's an animation that might fill in some gaps the image might have left.
 
 #### Time complexity
 
-If you're wondering about time complexity, merge sort is `O(n log n)`. I'll try my best to explain why. When breaking up merge sort into it's required operations, we get...
+If you're wondering about time complexity, merge sort is `O(n log n)`. I'll try my best to briefly explain why. When breaking up merge sort into it's required operations, we think about the steps like this:
 
-1. Whenever we can divide something in half at each iteration or recursive call (a level), we know that it can be represented using a logarithmic function. This is the "divide" part or number 2 in the above example.
-1. When we perform the comparison to solve our subproblems and combine each of them, a `O(n)` time complexity is required. That's `n` elements must be compared.
+1. Whenever we can divide the problem in half at each iteration or recursive call, we know that it can be represented using a logarithmic function. This is the "divide" part or number 2 in the above example.
+1. When we perform the comparison to solve our subproblems and combine each of them, a `O(n)` time complexity is required. So `n` elements must be compared.
 
-Thus, for `n` elements, we will have `log n` levels, and for each level we have to do `n` comparisons. That's why we get `O(n * log n)`.
+Thus, for `n` elements, we will have `log n` levels (recursive calls), and for each level we have to do `n` comparisons. That's why we get `O(n * log n)`.
+
+I'll go into time and space complexity in a future post!
 
 Whew!
 
@@ -81,7 +83,7 @@ Whew!
 
 Let's take a look at `mergeSort`.
 
-First, determine the base case!
+First, you guest it &mdash; determine the base case!
 
 ```js
 function mergeSort(arr) {
@@ -116,7 +118,7 @@ function merge(left, right) {
 }
 ```
 
-The comparison operation is actually really simple.
+The comparison operation is straightforward, but there's a few steps. Stay with me!
 
 1. Compare the value at the current index of each array. Both arrays start at index `0`.
 
@@ -132,7 +134,7 @@ function merge(left, right) {
 }
 ```
 
-2. Push the lower value to the `merged` array and increment that original array's index variable by 1.
+2. Push the smaller value to the `merged` array and increment that original array's index variable by 1. Let's examine each line of code...
 
 ```js
 function merge(left, right) {
@@ -164,7 +166,7 @@ function merge(left, right) {
 ```
 
 3. Repeat while both arrays have values to compare.
-1. After the while loop breaks, there will be some values left in either the left or right arrays. We have to add concatenate those to the resulting array before returning.
+1. After breaking out of the while loop, there will there will be a value left in either the left or right arrays. We have to add concatenate those to the resulting array before returning.
 
 ```js
 function merge(left, right) {
@@ -204,7 +206,7 @@ To dig in even deeper, I suggest visualizing what your call stack looks like wit
 
 #### Wrapping things up
 
-Merge sort is often the fastest solution for many problems. There are best case scenarios where "naive" sorting algorithms like bubble sort are actually faster. In an interview situation, be prepared to at least speak on merge sort and how it works. 
+Merge sort is often the fastest solution for many problems. There are many scenarios where "naive" sorting algorithms like bubble sort are actually faster, but generally merge sort is the safe choice. In an interview situation, I've actually never had to implement merge sort. Many times, JavaScript's native `Array.sort` works just fine (under the hood, I believe `sort` uses quiksort, which also a divide and conquer type  algorithm that's `O(n log n)`). However, it's always great to speak on the trade offs between each sorting method.
 
 ***
 References:
