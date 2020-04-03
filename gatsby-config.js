@@ -7,7 +7,7 @@ module.exports = {
     siteTitle: `Jimmy Huynh`,
     siteTitleAlt: `Jimmy Huynh - Full Stack Engineer`,
     siteHeadline: `Jimmy Huynh - Full Stack Engineer`,
-    siteUrl: `https://minimal-blog.lekoarts.de`,
+    siteUrl: `https://jimmyhuynh.dev`,
     siteDescription: `Jimmy Huynh's personal website and blog.`,
     siteLanguage: `en`,
     siteImage: `/banner.jpg`,
